@@ -3,22 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RegisterationComponent } from './Registeration/Components/registeration/registeration.component';
+import { RegisterationModule } from './Registeration/registeration.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterationComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    RegisterationModule
 
   ],
   providers: [],
