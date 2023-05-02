@@ -39,7 +39,6 @@ export class RegisterationService {
       }),
     };
   }
-  
   addUser(user: users): Observable<users> {
     return this.httpClient
       .post<users>(
