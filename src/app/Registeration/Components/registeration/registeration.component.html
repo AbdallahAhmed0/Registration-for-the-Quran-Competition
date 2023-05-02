@@ -1,1 +1,28 @@
-<p>registeration works!</p>
+<form [formGroup]="myForm">
+  <label>الإسم الأول</label>
+  <input type="text" formControlName="firstName">
+
+  <label>الإسم الثاني</label>
+  <input type="text" formControlName="lastName">
+
+  <label>العمر</label>
+  <input type="number" formControlName="age">
+
+  <label>المستوى</label>
+  <input type="number" formControlName="level">
+
+  <label>الرقم القومي</label>
+  <input type="text" formControlName="nationalId">
+
+  <label>الصورة</label>
+  <input type="file" formControlName="image">
+
+  <label>اسم الدار أو المحفظ</label>
+  <input type="text" formControlName="darName">
+
+  <label>رقم واتساب للتواصل</label>
+  <input type="text" formControlName="phone">
+
+  <label>تاريخ التسجيل</label>
+  <input type="date" formControlName="registrationDate">
+</form>
