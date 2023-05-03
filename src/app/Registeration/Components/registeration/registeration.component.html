@@ -50,6 +50,8 @@
               <div *ngIf="nationalId?.dirty && nationalId?.touched">
                 <small *ngIf="nationalId?.hasError('required')" class="text text-danger">* مطلوب إدخال الرقم القومي </small>
                 <small *ngIf="nationalId?.hasError('minlength') || nationalId?.hasError('maxlength')" class="text text-danger">* الرقم القومي يتكون من 14 رقم </small>
+                <small *ngIf="consoleError" class="text text-danger">{{consoleError}}</small>
+
               </div>
               <p class="card-subtitle mb-2 text-muted" style="margin-top: 10px;">تاريخ الميلاد: {{birthDate|date: 'dd-MM-yyyy'}}</p>
               <p class="card-subtitle mb-2 text-muted"> السن: {{Age}}</p>
@@ -76,7 +78,7 @@
                   </div>
                   <div class="col-md-6 mb-4">
                     <label class="form-label" style="display: block;margin-bottom: 25px;" for="form3Example1w"></label>
-                    <button type="submit" [disabled]="!myForm.valid" id="form3Example1w"  class="btn btn-success btn-lg">إرسال</button>
+                    <button type="submit" [disabled]="!myForm.valid || state != '' " id="form3Example1w"  class="btn btn-success btn-lg">إرسال</button>
                   </div>
 
               </div>

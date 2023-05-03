@@ -14,6 +14,9 @@ export class RegisterationComponent implements OnInit {
   birthDate!:Date;
   gender!:string;
   state!:string;
+
+  consoleError:any;
+
   constructor(private fb: FormBuilder,
               private registerService:RegisterationService,
               private datePipe: DatePipe) {}
@@ -38,6 +41,11 @@ export class RegisterationComponent implements OnInit {
         }
       }
     });
+    this.level?.valueChanges.subscribe(data =>{
+      if(this.nationalId?.value != ''){
+        this.state = this.getState(this.nationalId?.value,data);
+      }
+    });
 
   }
   onSubmit(){
@@ -46,8 +54,8 @@ export class RegisterationComponent implements OnInit {
         data => {
         },
         error => {
-          console.log(error);
           // Handle error
+          this.consoleError = error.message;
         }
       );
     }
@@ -109,7 +117,7 @@ export class RegisterationComponent implements OnInit {
       return '';
     }
     else{
-      return ` أكبر سن مسموح به للمستوى ${level} هو ${ageLevel}`
+      return ` أكبر سن مسموح به للمستوى ${level} هو ${ageLevel} سنة`
     }
 
   }
