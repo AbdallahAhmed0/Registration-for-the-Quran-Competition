@@ -24,6 +24,9 @@ export class RegisterationComponent implements OnInit {
       registrationDate: ['']
     });
   }
+  onSubmit(){
+    
+  }
 
 get firstName(){
 return this.myForm.get('firstName');
