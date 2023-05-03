@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { RegisterationRoutingModule } from './registeration-routing.module';
 import { RegisterationComponent } from './Components/registeration/registeration.component';
@@ -19,6 +19,8 @@ import { RegisterStateComponent } from './Components/register-state/register-sta
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
-  ]
+  ],
+  providers: [DatePipe], // Add DatePipe to the providers array
+
 })
 export class RegisterationModule { }

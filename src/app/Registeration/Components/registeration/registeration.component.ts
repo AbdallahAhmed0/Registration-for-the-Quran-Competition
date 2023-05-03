@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterationService } from '../../Services/registeration.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-registeration',
@@ -14,7 +15,8 @@ export class RegisterationComponent implements OnInit {
   gender!:string;
   state!:string;
   constructor(private fb: FormBuilder,
-              private registerService:RegisterationService) {}
+              private registerService:RegisterationService,
+              private datePipe: DatePipe) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({
