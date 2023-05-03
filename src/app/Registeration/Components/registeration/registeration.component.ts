@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterationService } from '../../Services/registeration.service';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registeration',
@@ -19,13 +20,14 @@ export class RegisterationComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private registerService:RegisterationService,
+              private route:Router,
               private datePipe: DatePipe) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      level: [, [Validators.required,Validators.max(8),Validators.min(1)]],
+      level: ['', [Validators.required,Validators.max(8),Validators.min(1)]],
       nationalId: ['', [Validators.required,Validators.minLength(14),Validators.maxLength(14)]],
       darName: ['', Validators.required],
       phone: ['', [Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
@@ -58,8 +60,7 @@ export class RegisterationComponent implements OnInit {
           this.consoleError = error.message;
         }
       );
-      console.log(this.myForm.value)
-
+      this.route.navigate(['Register/state'])
     }
   }
   // to prevent write any char in phone and nationalId
