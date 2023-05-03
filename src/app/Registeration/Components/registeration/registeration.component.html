@@ -1,14 +1,7 @@
 <!-- <section class="h-100 h-custom" style="background-color: #8fc4b7;"> -->
-  <div class class="area" >
-    <ul class="circles">
-            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-    </ul>
 
-<section dir="rtl" class="h-100 h-custom">
-  <div class="container py-5 h-100">
+  <section dir="rtl" class="h-100 h-custom" style="background-image: url('../../../../assets/img/IMG-20191030-WA0009.jpg');">
+    <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-8 col-xl-6">
         <div class="card rounded-3">
@@ -34,17 +27,7 @@
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-md-6 mb-4">
-                <label class="form-label" for="form3Example1q">السن</label>
-                <input type="number" min="5" max="20" formControlName="age" id="form3Example1q" class="form-control" required />
-                <div *ngIf="age?.dirty && age?.touched">
-                  <small *ngIf="age?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
-                  <small *ngIf="age?.hasError('min')" class="text text-danger">* أقل سن مسموح به 5 سنوات</small>
-                  <small *ngIf="age?.hasError('max')" class="text text-danger">* أكبر سن مسموح به 20 سنة</small>
-                </div>
-              </div>
-              <div class="col-md-6 mb-4">
+              <div class="form-outline mb-4">
                 <label class="form-label" style="display: block;margin-bottom: 32px;" for="form3Example1q"></label>
                 <select class="form-select"  formControlName="level" id="form3Example1q" required>
                   <option value=""  disabled selected>اختر المستوى</option>
@@ -62,7 +45,6 @@
                 </div>
               </div>
 
-            </div>
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">الرقم القومي</label>
               <input type="text" minlength="14" maxlength="14" formControlName="nationalId" id="form3Example1q" class="form-control" (keydown)="onKeyDown($event)" required />
@@ -78,10 +60,6 @@
                 <small *ngIf="phone?.hasError('required')" class="text text-danger">* مطلوب إدخال رقم للتواصل </small>
                 <small *ngIf="phone?.hasError('minlength') || phone?.hasError('maxlength')" class="text text-danger">* الرقم المحمول يتكون من 11 رقم </small>
               </div>
-            </div>
-            <div class="form-outline mb-4">
-              <label class="form-label" for="form3Example1q">الصورة</label>
-              <input type="file" formControlName="image" id="form3Example1q" accept="image/*" class="form-control" />
             </div>
 
             <div class="row">
@@ -106,4 +84,3 @@
     </div>
   </div>
 </section>
-  </div>
