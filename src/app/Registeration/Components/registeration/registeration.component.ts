@@ -60,7 +60,7 @@ export class RegisterationComponent implements OnInit {
           this.consoleError = error.message;
         }
       );
-      this.route.navigate(['Register/state',{state: this.myForm.value}])
+      this.route.navigate(['Register/state',{ state: { data: this.myForm.value } }])
     }
   }
   // to prevent write any char in phone and nationalId
