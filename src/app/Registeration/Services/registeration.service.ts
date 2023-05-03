@@ -43,7 +43,7 @@ export class RegisterationService {
   addUser(user: users): Observable<users> {
     return this.httpClient
       .post<users>(
-        `${environment.APPURL}/students/add`,
+        `${environment.APPURL}/users`,
         JSON.stringify(user),
         this.httpOption
       )
