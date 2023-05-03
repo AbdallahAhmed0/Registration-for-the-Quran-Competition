@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  
-  APPURL:'https://userform.herokuapp.com/api/'
+
+  APPURL:'https://userform.herokuapp.com/api'
 };
 
 /*

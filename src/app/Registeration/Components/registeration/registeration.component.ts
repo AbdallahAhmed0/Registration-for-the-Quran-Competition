@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterationService } from '../../Services/registeration.service';
+import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registeration',
@@ -9,22 +11,50 @@ import { RegisterationService } from '../../Services/registeration.service';
 })
 export class RegisterationComponent implements OnInit {
   myForm!:FormGroup;
+  Age!:number;
+  birthDate!:Date;
+  gender!:string;
+  state!:string;
+
+  consoleError:any;
 
   constructor(private fb: FormBuilder,
-              private registerService:RegisterationService) {}
+              private registerService:RegisterationService,
+              private route:Router,
+              private datePipe: DatePipe) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      age: ['', [Validators.required,Validators.max(20),Validators.min(5)]],
       level: ['', [Validators.required,Validators.max(8),Validators.min(1)]],
       nationalId: ['', [Validators.required,Validators.minLength(14),Validators.maxLength(14)]],
-      image: [''],
       darName: ['', Validators.required],
       phone: ['', [Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
-      registrationDate: ['']
     });
+    this.nationalId?.valueChanges.subscribe(data =>{
+      if(data.length == 14){
+        if(this.validateBirthDate(data)){
+          this.birthDate = this.getBirthDate(data);
+          this.consoleError == '* يجب إدخال رقم قومي صحيح وإلا ستحرم من التسجيل' ? this.consoleError='' : null;
+        }
+        else{
+          this.consoleError = `* يجب إدخال رقم قومي صحيح وإلا ستحرم من التسجيل`
+        }
+        this.Age = this.getAge(data);
+        this.gender = this.getGender(data);
+
+        if(this.level?.value != ''){
+          this.state = this.getState(data,this.level?.value);
+        }
+      }
+    });
+    this.level?.valueChanges.subscribe(data =>{
+      if(this.nationalId?.value != ''){
+        this.state = this.getState(this.nationalId?.value,data);
+      }
+    });
+
   }
   onSubmit(){
     if (this.myForm.valid) {
@@ -32,10 +62,11 @@ export class RegisterationComponent implements OnInit {
         data => {
         },
         error => {
-          console.log(error);
           // Handle error
+          this.consoleError = error.message;
         }
       );
+      this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
     }
   }
   // to prevent write any char in phone and nationalId
@@ -45,7 +76,70 @@ export class RegisterationComponent implements OnInit {
       event.preventDefault();
     }
   }
+  getBirthDate(nationalId: string): Date {
+    let year, day, month;
 
+    if (nationalId.charAt(0) === '2') {
+      year = 1900;
+    } else {
+      year = 2000;
+    }
+
+    year += parseInt(nationalId.substring(1, 3), 10);
+    month = parseInt(nationalId.substring(3, 5), 10) - 1; // month is zero-based
+    day = parseInt(nationalId.substring(5, 7), 10);
+
+    return new Date(year, month, day);
+  }
+  validateBirthDate(data: any): boolean {
+    const birthDate = this.getBirthDate(data);
+    const now = new Date();
+    return birthDate <= now;
+  }
+  getAge(nationalId: string): number {
+    const birthDate = this.getBirthDate(nationalId);
+    const currentDate = new Date();
+    return this.calculateAge(birthDate, currentDate);
+  }
+
+  getGender(nationalId: string): string {
+    if (parseInt(nationalId.substring(12, 13), 10) % 2 === 0) {
+      return "أنثى";
+    } else {
+      return "ذكر";
+    }
+  }
+
+  getState(nationalId: string, level: string): string {
+    enum Level {
+      L1 = 20,
+      L2 = 18,
+      L3 = 15,
+      L4 = 12,
+      L5 = 10,
+      L6 = 8,
+      L7 = 6,
+      L8 = 5,
+    }
+    const key = `L${level}` as keyof typeof Level;
+    const ageLevel = Level[key];
+
+    const Age =this.getAge(nationalId);
+    if(Age <= ageLevel){
+      return '';
+    }
+    else{
+      return ` أكبر سن مسموح به للمستوى ${level} هو ${ageLevel} سنة`
+    }
+
+  }
+
+  calculateAge(startDate: Date, endDate: Date): number {
+    const diffInMilliseconds = Math.abs(endDate.getTime() - startDate.getTime());
+    const msInYear = 1000 * 60 * 60 * 24 * 365.25; // 365.25 days in a year to account for leap years
+    const ageInYears = Math.floor(diffInMilliseconds / msInYear);
+    return ageInYears;
+  }
 
 get firstName(){
 return this.myForm.get('firstName');
@@ -53,17 +147,11 @@ return this.myForm.get('firstName');
 get lastName(){
   return this.myForm.get('lastName');
 }
-get age(){
-  return this.myForm.get('age');
-}
 get level(){
-  return this.myForm.get('lastName');
+  return this.myForm.get('level');
 }
 get nationalId(){
   return this.myForm.get('nationalId');
-}
-get image(){
-  return this.myForm.get('image');
 }
 get darName(){
   return this.myForm.get('darName');
@@ -71,8 +159,6 @@ get darName(){
 get phone(){
   return this.myForm.get('phone');
 }
-get registrationDate(){
-  return this.myForm.get('registrationDate');
-}
+
 
 }

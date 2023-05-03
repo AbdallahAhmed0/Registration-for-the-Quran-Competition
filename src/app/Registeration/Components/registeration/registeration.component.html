@@ -1,12 +1,12 @@
 <!-- <section class="h-100 h-custom" style="background-color: #8fc4b7;"> -->
-<section dir="rtl" class="h-100 h-custom" style="background-image: url('../../../../assets/img/IMG-20191030-WA0009.jpg');">
-  <div class="container py-5 h-100">
+
+  <section dir="rtl" class="h-100 h-custom" style="background-image: url('../../../../assets/img/IMG-20191030-WA0009.jpg');">
+    <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-8 col-xl-6">
         <div class="card rounded-3">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">التسجيل للمسابقة</h3>
-
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="px-md-2">
 
             <div class="row">
@@ -26,17 +26,7 @@
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-md-6 mb-4">
-                <label class="form-label" for="form3Example1q">السن</label>
-                <input type="number" min="5" max="20" formControlName="age" id="form3Example1q" class="form-control" required />
-                <div *ngIf="age?.dirty && age?.touched">
-                  <small *ngIf="age?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
-                  <small *ngIf="age?.hasError('min')" class="text text-danger">* أقل سن مسموح به 5 سنوات</small>
-                  <small *ngIf="age?.hasError('max')" class="text text-danger">* أكبر سن مسموح به 20 سنة</small>
-                </div>
-              </div>
-              <div class="col-md-6 mb-4">
+              <div class="form-outline mb-4">
                 <label class="form-label" style="display: block;margin-bottom: 32px;" for="form3Example1q"></label>
                 <select class="form-select"  formControlName="level" id="form3Example1q" required>
                   <option value=""  disabled selected>اختر المستوى</option>
@@ -54,14 +44,20 @@
                 </div>
               </div>
 
-            </div>
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">الرقم القومي</label>
               <input type="text" minlength="14" maxlength="14" formControlName="nationalId" id="form3Example1q" class="form-control" (keydown)="onKeyDown($event)" required />
               <div *ngIf="nationalId?.dirty && nationalId?.touched">
                 <small *ngIf="nationalId?.hasError('required')" class="text text-danger">* مطلوب إدخال الرقم القومي </small>
                 <small *ngIf="nationalId?.hasError('minlength') || nationalId?.hasError('maxlength')" class="text text-danger">* الرقم القومي يتكون من 14 رقم </small>
+                <small *ngIf="consoleError" class="text text-danger">{{consoleError}}</small>
+
               </div>
+              <p class="card-subtitle mb-2 text-muted" style="margin-top: 10px;">تاريخ الميلاد: {{birthDate|date: 'dd-MM-yyyy'}}</p>
+              <p class="card-subtitle mb-2 text-muted"> السن: {{Age}}</p>
+              <p class="card-subtitle mb-2 text-muted"> النوع: {{gender}}</p>
+              <p class="text text-danger"> {{state}}</p>
+
             </div>
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">رقم واتساب للتواصل</label>
@@ -70,10 +66,6 @@
                 <small *ngIf="phone?.hasError('required')" class="text text-danger">* مطلوب إدخال رقم للتواصل </small>
                 <small *ngIf="phone?.hasError('minlength') || phone?.hasError('maxlength')" class="text text-danger">* الرقم المحمول يتكون من 11 رقم </small>
               </div>
-            </div>
-            <div class="form-outline mb-4">
-              <label class="form-label" for="form3Example1q">الصورة</label>
-              <input type="file" formControlName="image" id="form3Example1q" accept="image/*" class="form-control" />
             </div>
 
             <div class="row">
@@ -86,7 +78,7 @@
                   </div>
                   <div class="col-md-6 mb-4">
                     <label class="form-label" style="display: block;margin-bottom: 25px;" for="form3Example1w"></label>
-                    <button type="submit" [disabled]="!myForm.valid" id="form3Example1w"  class="btn btn-success btn-lg">إرسال</button>
+                    <button type="submit" [disabled]="!myForm.valid || state != '' " id="form3Example1w"  class="btn btn-success btn-lg">إرسال</button>
                   </div>
 
               </div>

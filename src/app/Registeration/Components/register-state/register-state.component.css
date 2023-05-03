@@ -1,0 +1,12 @@
+.card-text
+{
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 12px;
+}
+.card-title{
+  margin: 50px 0px;
+}
+section{
+  min-height: 801px;
+}
