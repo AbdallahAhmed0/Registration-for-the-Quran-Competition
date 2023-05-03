@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { users } from '../../Models/users';
+import { users } from './../../Models/users';
 
 @Component({
   selector: 'app-register-state',
@@ -14,8 +13,7 @@ export class RegisterStateComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  this.user = history.state.data;
-  console.log(this.user)
+    this.user = history.state.data;
   }
 
 }
