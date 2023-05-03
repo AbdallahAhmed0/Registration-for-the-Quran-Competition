@@ -34,7 +34,13 @@ export class RegisterationComponent implements OnInit {
     });
     this.nationalId?.valueChanges.subscribe(data =>{
       if(data.length == 14){
-        this.birthDate = this.getBirthDate(data);
+        if(this.validateBirthDate(data)){
+          this.birthDate = this.getBirthDate(data);
+          this.consoleError == '* يجب إدخال رقم قومي صحيح وإلا ستحرم من التسجيل' ? this.consoleError='' : null;
+        }
+        else{
+          this.consoleError = `* يجب إدخال رقم قومي صحيح وإلا ستحرم من التسجيل`
+        }
         this.Age = this.getAge(data);
         this.gender = this.getGender(data);
 
@@ -85,7 +91,11 @@ export class RegisterationComponent implements OnInit {
 
     return new Date(year, month, day);
   }
-
+  validateBirthDate(data: any): boolean {
+    const birthDate = this.getBirthDate(data);
+    const now = new Date();
+    return birthDate <= now;
+  }
   getAge(nationalId: string): number {
     const birthDate = this.getBirthDate(nationalId);
     const currentDate = new Date();
