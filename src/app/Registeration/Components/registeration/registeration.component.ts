@@ -9,7 +9,9 @@ import { RegisterationService } from '../../Services/registeration.service';
 })
 export class RegisterationComponent implements OnInit {
   myForm!:FormGroup;
-
+  Age!:number;
+  birthDate!:Date;
+  gender!:string;
   constructor(private fb: FormBuilder,
               private registerService:RegisterationService) {}
 
@@ -21,6 +23,15 @@ export class RegisterationComponent implements OnInit {
       nationalId: ['', [Validators.required,Validators.minLength(14),Validators.maxLength(14)]],
       darName: ['', Validators.required],
       phone: ['', [Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
+    });
+    this.nationalId?.valueChanges.subscribe(data =>{
+      if(data.length == 14){
+        this.birthDate = this.getBirthDate(data);
+        this.Age = this.getAge(data);
+        this.gender = this.getGender(data);
+        console.log(this.getState(data,this.level?.value),'getState')
+
+      }
     });
   }
   onSubmit(){
@@ -66,9 +77,9 @@ export class RegisterationComponent implements OnInit {
 
   getGender(nationalId: string): string {
     if (parseInt(nationalId.substring(12, 13), 10) % 2 === 0) {
-      return "Female";
+      return "أنثى";
     } else {
-      return "Male";
+      return "ذكر";
     }
   }
 
@@ -76,11 +87,11 @@ export class RegisterationComponent implements OnInit {
     return this.getAge(nationalId) != levelAge;
   }
 
-  calculateAge(birthDate: Date, currentDate: Date): number {
-    const diffTime = Math.abs(currentDate.getTime() - birthDate.getTime());
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    const diffYears = diffDays / 365.25;
-    return Math.floor(diffYears);
+  calculateAge(startDate: Date, endDate: Date): number {
+    const diffInMilliseconds = Math.abs(endDate.getTime() - startDate.getTime());
+    const msInYear = 1000 * 60 * 60 * 24 * 365.25; // 365.25 days in a year to account for leap years
+    const ageInYears = Math.floor(diffInMilliseconds / msInYear);
+    return ageInYears;
   }
 
 get firstName(){

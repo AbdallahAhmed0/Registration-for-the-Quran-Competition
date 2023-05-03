@@ -7,7 +7,16 @@
         <div class="card rounded-3">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">التسجيل للمسابقة</h3>
+            <div class="card" style="width: 18rem; margin-bottom: 20px;">
+              <div class="card-body">
+                <h5 class="card-title">معلومات إضافية</h5>
+                <h6 class="card-subtitle mb-2 text-muted">الرقم القومي:{{nationalId?.value}}</h6>
+                <p class="card-subtitle mb-2 text-muted">تاريخ الميلاد: {{birthDate}}</p>
+                <p class="card-subtitle mb-2 text-muted"> السن: {{Age}}</p>
+                <p class="card-subtitle mb-2 text-muted"> النوع: {{gender}}</p>
 
+              </div>
+            </div>
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="px-md-2">
 
             <div class="row">
