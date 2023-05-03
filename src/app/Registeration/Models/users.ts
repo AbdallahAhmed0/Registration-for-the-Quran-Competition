@@ -7,5 +7,4 @@ export interface users{
   nationalId: string,
   darName: string,
   phone: string,
-
 }
