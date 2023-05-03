@@ -42,7 +42,46 @@ export class RegisterationComponent implements OnInit {
       event.preventDefault();
     }
   }
+  getBirthDate(nationalId: string): Date {
+    let year, day, month;
 
+    if (nationalId.charAt(0) === '2') {
+      year = 1900;
+    } else {
+      year = 2000;
+    }
+
+    year += parseInt(nationalId.substring(1, 3), 10);
+    month = parseInt(nationalId.substring(3, 5), 10) - 1; // month is zero-based
+    day = parseInt(nationalId.substring(5, 7), 10);
+
+    return new Date(year, month, day);
+  }
+
+  getAge(nationalId: string): number {
+    const birthDate = this.getBirthDate(nationalId);
+    const currentDate = new Date();
+    return this.calculateAge(birthDate, currentDate);
+  }
+
+  getGender(nationalId: string): string {
+    if (parseInt(nationalId.substring(12, 13), 10) % 2 === 0) {
+      return "Female";
+    } else {
+      return "Male";
+    }
+  }
+
+  getState(nationalId: string, levelAge: number): boolean {
+    return this.getAge(nationalId) != levelAge;
+  }
+
+  calculateAge(birthDate: Date, currentDate: Date): number {
+    const diffTime = Math.abs(currentDate.getTime() - birthDate.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const diffYears = diffDays / 365.25;
+    return Math.floor(diffYears);
+  }
 
 get firstName(){
 return this.myForm.get('firstName');
