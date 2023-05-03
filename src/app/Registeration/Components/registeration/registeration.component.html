@@ -32,8 +32,8 @@
                 <input type="number" min="5" max="20" formControlName="age" id="form3Example1q" class="form-control" required />
                 <div *ngIf="age?.dirty && age?.touched">
                   <small *ngIf="age?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
-                  <small *ngIf="age?.hasError('min')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
-                  <small *ngIf="age?.hasError('max')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
+                  <small *ngIf="age?.hasError('min')" class="text text-danger">* أقل سن مسموح به 5 سنوات</small>
+                  <small *ngIf="age?.hasError('max')" class="text text-danger">* أكبر سن مسموح به 20 سنة</small>
                 </div>
               </div>
               <div class="col-md-6 mb-4">
@@ -60,17 +60,15 @@
               <input type="text" minlength="14" maxlength="14" formControlName="nationalId" id="form3Example1q" class="form-control" required />
               <div *ngIf="nationalId?.dirty && nationalId?.touched">
                 <small *ngIf="nationalId?.hasError('required')" class="text text-danger">* مطلوب إدخال الرقم القومي </small>
-                <small *ngIf="nationalId?.hasError('minlength')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
-                <small *ngIf="nationalId?.hasError('maxlength')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
+                <small *ngIf="nationalId?.hasError('minlength') || nationalId?.hasError('maxlength')" class="text text-danger">* الرقم القومي يتكون من 14 رقم </small>
               </div>
             </div>
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">رقم واتساب للتواصل</label>
               <input type="text" minlength="11" maxlength="11" formControlName="phone" id="form3Example1q" class="form-control" required/>
               <div *ngIf="phone?.dirty && phone?.touched">
-                <small *ngIf="phone?.hasError('required')" class="text text-danger">* مطلوب إدخال الرقم القومي </small>
-                <small *ngIf="phone?.hasError('minlength')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
-                <small *ngIf="phone?.hasError('maxlength')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
+                <small *ngIf="phone?.hasError('required')" class="text text-danger">* مطلوب إدخال رقم للتواصل </small>
+                <small *ngIf="phone?.hasError('minlength') || phone?.hasError('maxlength')" class="text text-danger">* الرقم المحمول يتكون من 11 رقم </small>
               </div>
             </div>
             <div class="form-outline mb-4">
@@ -88,7 +86,7 @@
                   </div>
                   <div class="col-md-6 mb-4">
                     <label class="form-label" style="display: block;margin-bottom: 25px;" for="form3Example1w"></label>
-                    <button type="submit" [disabled]="!myForm.valid" id="form3Example1w"  class="btn btn-success btn-lg submit ">إرسال</button>
+                    <button type="submit" [disabled]="!myForm.valid" id="form3Example1w"  class="btn btn-success btn-lg">إرسال</button>
                   </div>
 
               </div>

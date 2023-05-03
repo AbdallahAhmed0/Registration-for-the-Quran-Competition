@@ -38,7 +38,7 @@ get level(){
   return this.myForm.get('lastName');
 }
 get nationalId(){
-  return this.myForm.get('level');
+  return this.myForm.get('nationalId');
 }
 get image(){
   return this.myForm.get('image');
