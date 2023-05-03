@@ -18,11 +18,39 @@ export class RegisterationComponent implements OnInit {
       age: ['', Validators.required],
       level: ['', Validators.required],
       nationalId: ['', Validators.required],
-      image: ['', Validators.required],
+      image: [''],
       darName: ['', Validators.required],
       phone: ['', Validators.required],
-      registrationDate: ['', Validators.required]
+      registrationDate: ['']
     });
   }
+
+get firstName(){
+return this.myForm.get('firstName');
+}
+get lastName(){
+  return this.myForm.get('lastName');
+}
+get age(){
+  return this.myForm.get('age');
+}
+get level(){
+  return this.myForm.get('lastName');
+}
+get nationalId(){
+  return this.myForm.get('level');
+}
+get image(){
+  return this.myForm.get('image');
+}
+get darName(){
+  return this.myForm.get('darName');
+}
+get phone(){
+  return this.myForm.get('phone');
+}
+get registrationDate(){
+  return this.myForm.get('registrationDate');
+}
 
 }
