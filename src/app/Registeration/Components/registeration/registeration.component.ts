@@ -15,12 +15,12 @@ export class RegisterationComponent implements OnInit {
     this.myForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      age: ['', Validators.required],
-      level: ['', Validators.required],
-      nationalId: ['', Validators.required],
+      age: ['', [Validators.required,Validators.max(20),Validators.min(5)]],
+      level: ['', [Validators.required,Validators.max(8),Validators.min(1)]],
+      nationalId: ['', [Validators.required,Validators.minLength(14),Validators.maxLength(14)]],
       image: [''],
       darName: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', [Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
       registrationDate: ['']
     });
   }
