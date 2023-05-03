@@ -7,27 +7,38 @@
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">التسجيل للمسابقة</h3>
 
-            <form [formGroup]="myForm" class="px-md-2">
+            <form [formGroup]="myForm"  class="px-md-2">
 
             <div class="row">
               <div class="col-md-6 mb-4">
                 <label class="form-label" for="form3Example1q">الإسم الأول</label>
-                <input type="text" formControlName="firstName" id="form3Example1q" class="form-control" />
+                <input type="text" formControlName="firstName" id="form3Example1q" class="form-control" required />
+                <div *ngIf="firstName?.dirty && firstName?.touched">
+                  <small *ngIf="firstName?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الأول</small>
+                </div>
               </div>
               <div class="col-md-6 mb-4">
                 <label class="form-label" for="form3Example1q">الإسم الثاني</label>
-                <input type="text" formControlName="lastName" id="form3Example1q" class="form-control" />
+                <input type="text" formControlName="lastName" id="form3Example1q" class="form-control" required/>
+                <div *ngIf="lastName?.dirty && lastName?.touched">
+                  <small *ngIf="lastName?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
+                </div>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 mb-4">
-                <label class="form-label" for="form3Example1q">العمر</label>
-                <input type="number" min="5" max="20" formControlName="age" id="form3Example1q" class="form-control" />
+                <label class="form-label" for="form3Example1q">السن</label>
+                <input type="number" min="5" max="20" formControlName="age" id="form3Example1q" class="form-control" required />
+                <div *ngIf="age?.dirty && age?.touched">
+                  <small *ngIf="age?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
+                  <small *ngIf="age?.hasError('min')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
+                  <small *ngIf="age?.hasError('max')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
+                </div>
               </div>
               <div class="col-md-6 mb-4">
                 <label class="form-label" style="display: block;margin-bottom: 32px;" for="form3Example1q"></label>
-                <select class="form-select"  formControlName="level" id="form3Example1q">
+                <select class="form-select"  formControlName="level" id="form3Example1q" required>
                   <option value=""  disabled selected>اختر المستوى</option>
                   <option value="1">الأول</option>
                   <option value="2">الثاني</option>
@@ -38,16 +49,29 @@
                   <option value="7">السابع</option>
                   <option value="8">الثامن</option>
                 </select>
+                <div *ngIf="level?.dirty && level?.touched">
+                  <small *ngIf="level?.hasError('required')" class="text text-danger">* مطلوب إدخال المستوى </small>
+                </div>
               </div>
 
             </div>
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">الرقم القومي</label>
-              <input type="text" minlength="14" maxlength="14" formControlName="nationalId" id="form3Example1q" class="form-control" />
+              <input type="text" minlength="14" maxlength="14" formControlName="nationalId" id="form3Example1q" class="form-control" required />
+              <div *ngIf="nationalId?.dirty && nationalId?.touched">
+                <small *ngIf="nationalId?.hasError('required')" class="text text-danger">* مطلوب إدخال الرقم القومي </small>
+                <small *ngIf="nationalId?.hasError('minlength')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
+                <small *ngIf="nationalId?.hasError('maxlength')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
+              </div>
             </div>
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">رقم واتساب للتواصل</label>
-              <input type="text" minlength="11" maxlength="11" formControlName="phone" id="form3Example1q" class="form-control" />
+              <input type="text" minlength="11" maxlength="11" formControlName="phone" id="form3Example1q" class="form-control" required/>
+              <div *ngIf="phone?.dirty && phone?.touched">
+                <small *ngIf="phone?.hasError('required')" class="text text-danger">* مطلوب إدخال الرقم القومي </small>
+                <small *ngIf="phone?.hasError('minlength')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
+                <small *ngIf="phone?.hasError('maxlength')" class="text text-danger">* مطلوب إدخال الإسم الثاني</small>
+              </div>
             </div>
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">الصورة</label>
@@ -57,11 +81,14 @@
             <div class="row">
             <div class="col-md-6 mb-4">
                     <label class="form-label" for="form3Example1w">اسم الدار أو المحفظ</label>
-                    <input type="text" id="form3Example1w" formControlName="darName" class="form-control" />
+                    <input type="text" id="form3Example1w" formControlName="darName" class="form-control" required />
+                    <div *ngIf="darName?.dirty && darName?.touched">
+                      <small *ngIf="darName?.hasError('required')" class="text text-danger">* مطلوب إدخال اسم الدار أو المحفظ </small>
+                    </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <label class="form-label" style="display: block;margin-bottom: 25px;" for="form3Example1w"></label>
-                    <button type="submit" id="form3Example1w" style="margin-left: 40px;" class="btn btn-success btn-lg ">إرسال</button>
+                    <button type="submit" [disabled]="!myForm.valid" id="form3Example1w"  class="btn btn-success btn-lg submit ">إرسال</button>
                   </div>
 
               </div>
