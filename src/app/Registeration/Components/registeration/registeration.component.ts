@@ -25,7 +25,7 @@ export class RegisterationComponent implements OnInit {
     this.myForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      level: ['', [Validators.required,Validators.max(8),Validators.min(1)]],
+      level: [, [Validators.required,Validators.max(8),Validators.min(1)]],
       nationalId: ['', [Validators.required,Validators.minLength(14),Validators.maxLength(14)]],
       darName: ['', Validators.required],
       phone: ['', [Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
@@ -58,6 +58,8 @@ export class RegisterationComponent implements OnInit {
           this.consoleError = error.message;
         }
       );
+      console.log(this.myForm.value)
+
     }
   }
   // to prevent write any char in phone and nationalId
@@ -109,7 +111,6 @@ export class RegisterationComponent implements OnInit {
       L8 = 5,
     }
     const key = `L${level}` as keyof typeof Level;
-    console.log(key)
     const ageLevel = Level[key];
 
     const Age =this.getAge(nationalId);
