@@ -12,6 +12,7 @@ export class RegisterationComponent implements OnInit {
   Age!:number;
   birthDate!:Date;
   gender!:string;
+  state!:string;
   constructor(private fb: FormBuilder,
               private registerService:RegisterationService) {}
 
@@ -29,10 +30,13 @@ export class RegisterationComponent implements OnInit {
         this.birthDate = this.getBirthDate(data);
         this.Age = this.getAge(data);
         this.gender = this.getGender(data);
-        console.log(this.getState(data,this.level?.value),'getState')
 
+        if(this.level?.value != ''){
+          this.state = this.getState(data,this.level?.value);
+        }
       }
     });
+
   }
   onSubmit(){
     if (this.myForm.valid) {
@@ -83,8 +87,29 @@ export class RegisterationComponent implements OnInit {
     }
   }
 
-  getState(nationalId: string, levelAge: number): boolean {
-    return this.getAge(nationalId) != levelAge;
+  getState(nationalId: string, level: string): string {
+    enum Level {
+      L1 = 20,
+      L2 = 18,
+      L3 = 15,
+      L4 = 12,
+      L5 = 10,
+      L6 = 8,
+      L7 = 6,
+      L8 = 5,
+    }
+    const key = `L${level}` as keyof typeof Level;
+    console.log(key)
+    const ageLevel = Level[key];
+
+    const Age =this.getAge(nationalId);
+    if(Age <= ageLevel){
+      return '';
+    }
+    else{
+      return ` أكبر سن مسموح به للمستوى ${level} هو ${ageLevel}`
+    }
+
   }
 
   calculateAge(startDate: Date, endDate: Date): number {
@@ -101,7 +126,7 @@ get lastName(){
   return this.myForm.get('lastName');
 }
 get level(){
-  return this.myForm.get('lastName');
+  return this.myForm.get('level');
 }
 get nationalId(){
   return this.myForm.get('nationalId');

@@ -51,6 +51,11 @@
                 <small *ngIf="nationalId?.hasError('required')" class="text text-danger">* مطلوب إدخال الرقم القومي </small>
                 <small *ngIf="nationalId?.hasError('minlength') || nationalId?.hasError('maxlength')" class="text text-danger">* الرقم القومي يتكون من 14 رقم </small>
               </div>
+              <p class="card-subtitle mb-2 text-muted" style="margin-top: 10px;">تاريخ الميلاد: {{birthDate|date}}</p>
+              <p class="card-subtitle mb-2 text-muted"> السن: {{Age}}</p>
+              <p class="card-subtitle mb-2 text-muted"> النوع: {{gender}}</p>
+              <p class="text text-danger"> {{state}}</p>
+
             </div>
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">رقم واتساب للتواصل</label>
