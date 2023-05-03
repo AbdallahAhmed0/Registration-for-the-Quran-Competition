@@ -5,11 +5,13 @@ import { RegisterationRoutingModule } from './registeration-routing.module';
 import { RegisterationComponent } from './Components/registeration/registeration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterStateComponent } from './Components/register-state/register-state.component';
 
 
 @NgModule({
   declarations: [
-    RegisterationComponent
+    RegisterationComponent,
+    RegisterStateComponent
   ],
   imports: [
     CommonModule,
