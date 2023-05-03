@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegisterationService } from '../../Services/registeration.service';
 
 @Component({
   selector: 'app-registeration',
@@ -9,7 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterationComponent implements OnInit {
   myForm!:FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,
+              private registerService:RegisterationService) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -25,7 +27,16 @@ export class RegisterationComponent implements OnInit {
     });
   }
   onSubmit(){
-    
+    if (this.myForm.valid) {
+      this.registerService.addUser(this.myForm.value).subscribe(
+        data => {
+        },
+        error => {
+          console.log(error);
+          // Handle error
+        }
+      );
+    }
   }
 
 get firstName(){
