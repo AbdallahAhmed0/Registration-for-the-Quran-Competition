@@ -9,7 +9,7 @@ const routes: Routes = [
     path:"Register",
     loadChildren:()=>import('./Registeration/registeration.module').then(l => l.RegisterationModule)
   },
-  { path: '**', component: HomeComponent } // Wildcard route for 404 page
+  { path: '**', redirectTo: 'home' } // Wildcard route for 404 page
 
 ];
 
