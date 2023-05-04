@@ -6,6 +6,7 @@
       <div class="col-lg-8 col-xl-6">
         <div class="card rounded-3">
           <div class="card-body p-4 p-md-5">
+            <button class="btn btn-success mb-4" [routerLink]="['/home']">الصفحة الرئيسية</button>
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">التسجيل للمسابقة</h3>
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="px-md-2">
 
@@ -25,8 +26,8 @@
                 </div>
               </div>
             </div>
-
-              <div class="form-outline mb-4">
+            <div class="row">
+              <div class="col-md-6 mb-4">
                 <label class="form-label" style="display: block;margin-bottom: 32px;" for="form3Example1q"></label>
                 <select class="form-select"  formControlName="level" id="form3Example1q" required>
                   <option value=""  disabled selected>اختر المستوى</option>
@@ -43,14 +44,37 @@
                   <p *ngIf="level?.hasError('required')" class="text text-danger">* مطلوب إدخال المستوى </p>
                 </div>
               </div>
+              <div class="col-md-6 mb-4">
+                <label class="form-label" style="display: block;margin-bottom: 32px;" for="form3Example1q"></label>
+                <select class="form-select"  formControlName="city" id="form3Example1q" required>
+                  <option value=""  disabled selected>اختر المدينة</option>
+                  <option value="القاهرة">القاهرة</option>
+                  <option value="الجيزة">الجيزة</option>
+                  <option value="الإسكندرية">الإسكندرية</option>
+                  <option value="شرم الشيخ">شرم الشيخ</option>
+                  <option value="بورسعيد">بورسعيد</option>
+                  <option value="السويس">السويس</option>
+                  <option value="طنطا">طنطا</option>
+                  <option value="المنصورة">المنصورة</option>
+                  <option value="دمياط">دمياط</option>
+                  <option value="الزقازيق">الزقازيق</option>
+                  <option value="الفيوم">الفيوم</option>
+                </select>
+                <div *ngIf="city?.dirty && city?.touched">
+                  <p *ngIf="city?.hasError('required')" class="text text-danger">* مطلوب إدخال اسم المدينة </p>
+                </div>
+              </div>
+
+            </div>
 
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">الرقم القومي</label>
-              <input type="text" minlength="14" maxlength="14" formControlName="nationalId" id="form3Example1q" class="form-control" (keydown)="onKeyDown($event)" required />
+              <input type="text" minlength="14"placeholder="يجب أن تكون الأرقام باللغة الإنجليزية" maxlength="14" formControlName="nationalId" id="form3Example1q" class="form-control" (keydown)="onKeyDown($event)" required />
               <div *ngIf="nationalId?.dirty && nationalId?.touched">
                 <p *ngIf="nationalId?.hasError('required')" class="text text-danger">* مطلوب إدخال الرقم القومي </p>
                 <p *ngIf="nationalId?.hasError('minlength') || nationalId?.hasError('maxlength')" class="text text-danger">* الرقم القومي يتكون من 14 رقم </p>
                 <p *ngIf="consoleError != '' " class="text text-danger">*{{consoleError}}</p>
+
 
               </div>
               <p class="card-subtitle mb-2 text-muted" style="margin-top: 10px;">تاريخ الميلاد: {{birthDate|date: 'dd-MM-yyyy'}}</p>
@@ -61,10 +85,11 @@
             </div>
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">رقم واتساب للتواصل</label>
-              <input type="text" minlength="11" maxlength="11" formControlName="phone" id="form3Example1q" class="form-control" (keydown)="onKeyDown($event)" required/>
+              <input type="text" placeholder="يجب أن تكون الأرقام باللغة الإنجليزية" minlength="11" maxlength="11" formControlName="phone" id="form3Example1q" class="form-control" (keydown)="onKeyDown($event)" required/>
               <div *ngIf="phone?.dirty && phone?.touched">
                 <p *ngIf="phone?.hasError('required')" class="text text-danger">* مطلوب إدخال رقم للتواصل </p>
                 <p *ngIf="phone?.hasError('minlength') || phone?.hasError('maxlength')" class="text text-danger">* الرقم المحمول يتكون من 11 رقم </p>
+
               </div>
             </div>
 
@@ -83,7 +108,6 @@
 
               </div>
             </form>
-
           </div>
         </div>
       </div>
