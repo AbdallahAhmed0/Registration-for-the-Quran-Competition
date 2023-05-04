@@ -16,7 +16,7 @@ export class RegisterationComponent implements OnInit {
   gender!:string;
   state!:string;
 
-  consoleError:any;
+  consoleError:any = '';
 
   constructor(private fb: FormBuilder,
               private registerService:RegisterationService,
@@ -36,7 +36,7 @@ export class RegisterationComponent implements OnInit {
       if(data.length == 14){
         if(this.validateBirthDate(data)){
           this.birthDate = this.getBirthDate(data);
-          this.consoleError == '* يجب إدخال رقم قومي صحيح وإلا ستحرم من التسجيل' ? this.consoleError='' : null;
+          this.consoleError = '';
         }
         else{
           this.consoleError = `* يجب إدخال رقم قومي صحيح وإلا ستحرم من التسجيل`
@@ -63,10 +63,18 @@ export class RegisterationComponent implements OnInit {
         },
         error => {
           // Handle error
-          this.consoleError = error.message;
+          if(error == 'Error: National ID must be unique and consist of 14 digits'){
+            this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
+            console.log(this.consoleError)
+          }
         }
       );
-      this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
+      setTimeout(()=>{
+        if(this.consoleError == ''){
+          this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
+        }
+      },1000)
+
     }
   }
   // to prevent write any char in phone and nationalId
