@@ -6,6 +6,7 @@
       <div class="col-lg-8 col-xl-6">
         <div class="card rounded-3">
           <div class="card-body p-4 p-md-5">
+            <button class="btn btn-success mb-4" [routerLink]="['/home']">الصفحة الرئيسية</button>
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">التسجيل للمسابقة</h3>
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="px-md-2">
 
@@ -83,7 +84,6 @@
 
               </div>
             </form>
-
           </div>
         </div>
       </div>
