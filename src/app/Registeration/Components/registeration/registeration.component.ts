@@ -16,7 +16,7 @@ export class RegisterationComponent implements OnInit {
   gender!:string;
   state!:string;
 
-  consoleError:any;
+  consoleError:any = '';
 
   constructor(private fb: FormBuilder,
               private registerService:RegisterationService,
@@ -36,7 +36,7 @@ export class RegisterationComponent implements OnInit {
       if(data.length == 14){
         if(this.validateBirthDate(data)){
           this.birthDate = this.getBirthDate(data);
-          this.consoleError == '* يجب إدخال رقم قومي صحيح وإلا ستحرم من التسجيل' ? this.consoleError='' : null;
+          this.consoleError = '';
         }
         else{
           this.consoleError = `* يجب إدخال رقم قومي صحيح وإلا ستحرم من التسجيل`
@@ -63,10 +63,12 @@ export class RegisterationComponent implements OnInit {
         },
         error => {
           // Handle error
-          this.consoleError = error.message;
+          this.consoleError = error;
         }
       );
-      this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
+      if(this.consoleError == ''){
+        this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
+      }
     }
   }
   // to prevent write any char in phone and nationalId
