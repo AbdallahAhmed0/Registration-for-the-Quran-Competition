@@ -26,8 +26,8 @@
                 </div>
               </div>
             </div>
-
-              <div class="form-outline mb-4">
+            <div class="row">
+              <div class="col-md-6 mb-4">
                 <label class="form-label" style="display: block;margin-bottom: 32px;" for="form3Example1q"></label>
                 <select class="form-select"  formControlName="level" id="form3Example1q" required>
                   <option value=""  disabled selected>اختر المستوى</option>
@@ -44,6 +44,45 @@
                   <p *ngIf="level?.hasError('required')" class="text text-danger">* مطلوب إدخال المستوى </p>
                 </div>
               </div>
+              <div class="col-md-6 mb-4">
+                <label class="form-label" style="display: block;margin-bottom: 32px;" for="form3Example1q"></label>
+                <select class="form-select"  formControlName="city" id="form3Example1q" required>
+                  <option value=""  disabled selected>اختر المدينة</option>
+                  <option value="Cairo">القاهرة</option>
+                  <option value="Alexandria">الإسكندرية</option>
+                  <option value="Giza">الجيزة</option>
+                  <option value="Shubra El Kheima">شرم الشيخ</option>
+                  <option value="Port Said">بورسعيد</option>
+                  <option value="Suez">السويس</option>
+                  <option value="Luxor">الأقصر</option>
+                  <option value="Aswan">أسوان</option>
+                  <option value="Tanta">طنطا</option>
+                  <option value="Mansoura">Mansoura</option>
+                  <option value="Damietta">Damietta</option>
+                  <option value="Zagazig">Zagazig</option>
+                  <option value="Faiyum">Faiyum</option>
+                  <option value="Ismailia">Ismailia</option>
+                  <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+                  <option value="Qena">Qena</option>
+                  <option value="Beni Suef">Beni Suef</option>
+                  <option value="Sohag">Sohag</option>
+                  <option value="Hurghada">Hurghada</option>
+                  <option value="Banha">Banha</option>
+                  <option value="Mallawi">Mallawi</option>
+                  <option value="El Arish">El Arish</option>
+                  <option value="Bani Mazar">Bani Mazar</option>
+                  <option value="Siwa Oasis">Siwa Oasis</option>
+                  <option value="Rosetta">Rosetta</option>
+                  <option value="Edfu">Edfu</option>
+                  <option value="Mersa Matruh">Mersa Matruh</option>
+
+                </select>
+                <div *ngIf="city?.dirty && city?.touched">
+                  <p *ngIf="city?.hasError('required')" class="text text-danger">* مطلوب إدخال اسم المدينة </p>
+                </div>
+              </div>
+
+            </div>
 
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">الرقم القومي</label>
