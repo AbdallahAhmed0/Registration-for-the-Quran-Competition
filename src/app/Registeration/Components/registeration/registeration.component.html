@@ -48,19 +48,17 @@
                 <label class="form-label" style="display: block;margin-bottom: 32px;" for="form3Example1q"></label>
                 <select class="form-select"  formControlName="city" id="form3Example1q" required>
                   <option value=""  disabled selected>اختر المدينة</option>
-                  <option value="Cairo">القاهرة</option>
-                  <option value="Alexandria">الإسكندرية</option>
-                  <option value="Giza">الجيزة</option>
-                  <option value="Shubra El Kheima">شرم الشيخ</option>
-                  <option value="Port Said">بورسعيد</option>
-                  <option value="Suez">السويس</option>
-                  <option value="Luxor">الأقصر</option>
-                  <option value="Aswan">أسوان</option>
-                  <option value="Tanta">طنطا</option>
-                  <option value="Mansoura">المنصورة</option>
-                  <option value="Damietta">دمياط</option>
-                  <option value="Zagazig">الزقازيق</option>
-                  <option value="Faiyum">الفيوم</option>
+                  <option value="القاهرة">القاهرة</option>
+                  <option value="الجيزة">الجيزة</option>
+                  <option value="الإسكندرية">الإسكندرية</option>
+                  <option value="شرم الشيخ">شرم الشيخ</option>
+                  <option value="بورسعيد">بورسعيد</option>
+                  <option value="السويس">السويس</option>
+                  <option value="طنطا">طنطا</option>
+                  <option value="المنصورة">المنصورة</option>
+                  <option value="دمياط">دمياط</option>
+                  <option value="الزقازيق">الزقازيق</option>
+                  <option value="الفيوم">الفيوم</option>
                 </select>
                 <div *ngIf="city?.dirty && city?.touched">
                   <p *ngIf="city?.hasError('required')" class="text text-danger">* مطلوب إدخال اسم المدينة </p>
