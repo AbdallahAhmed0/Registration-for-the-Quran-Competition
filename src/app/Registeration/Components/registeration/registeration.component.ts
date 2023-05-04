@@ -17,6 +17,8 @@ export class RegisterationComponent implements OnInit {
   state:string ='';
 
   consoleError:any = '';
+  checkErrorInputNumberID:String='';
+  checkErrorInputNumberphone:String='';
 
   constructor(private fb: FormBuilder,
               private registerService:RegisterationService,
@@ -31,6 +33,7 @@ export class RegisterationComponent implements OnInit {
       nationalId: ['', [Validators.required,Validators.minLength(14),Validators.maxLength(14)]],
       darName: ['', Validators.required],
       phone: ['', [Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
+      city: ['', Validators.required],
     });
     this.nationalId?.valueChanges.subscribe(data =>{
       if(data.length == 14){
@@ -78,10 +81,18 @@ export class RegisterationComponent implements OnInit {
     }
   }
   // to prevent write any char in phone and nationalId
-  onKeyDown(event: KeyboardEvent) {
-    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+  onKeyDown(event: KeyboardEvent,type:string) {
+    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'ArrowLeft','ArrowUp','ArrowDown','Shift','Enter', 'ArrowRight', 'Delete'];
     if (!allowedKeys.includes(event.key)) {
       event.preventDefault();
+      if(type == 'id'){
+        this.checkErrorInputNumberID = `يجب أن تكون الأرقام باللغة الإنجليزية`
+      }else{
+        this.checkErrorInputNumberphone = `يجب أن تكون الأرقام باللغة الإنجليزية`
+      }
+    }
+    else{
+      this.checkErrorInputNumberID = this.checkErrorInputNumberphone = '';
     }
   }
   getBirthDate(nationalId: string): Date {
@@ -166,6 +177,9 @@ get darName(){
 }
 get phone(){
   return this.myForm.get('phone');
+}
+get city(){
+  return this.myForm.get('city');
 }
 
 
