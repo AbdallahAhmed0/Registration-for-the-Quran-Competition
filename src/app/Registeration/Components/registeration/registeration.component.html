@@ -1,6 +1,6 @@
-<!-- <section class="h-100 h-custom" style="background-color: #8fc4b7;"> -->
+<section dir="rtl" class="h-100 h-custom" style="background-color: #8fc4b7;">
 
-  <section dir="rtl" class="h-100 h-custom" style="background-image: url('../../../../assets/img/quran.jpg');">
+  <!-- <section dir="rtl" class="h-100 h-custom" style="background-image: url('../../../../assets/img/quran.jpg');"> -->
     <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-8 col-xl-6">
@@ -18,7 +18,7 @@
                 </div>
               </div>
               <div class="col-md-6 mb-4">
-                <label class="form-label" for="form3Example1q">الإسم الثاني</label>
+                <label class="form-label" for="form3Example1q">باقي الإسم</label>
                 <input type="text" formControlName="lastName" id="form3Example1q" class="form-control" required/>
                 <div *ngIf="lastName?.dirty && lastName?.touched">
                   <p *ngIf="lastName?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الثاني</p>
@@ -50,7 +50,7 @@
               <div *ngIf="nationalId?.dirty && nationalId?.touched">
                 <p *ngIf="nationalId?.hasError('required')" class="text text-danger">* مطلوب إدخال الرقم القومي </p>
                 <p *ngIf="nationalId?.hasError('minlength') || nationalId?.hasError('maxlength')" class="text text-danger">* الرقم القومي يتكون من 14 رقم </p>
-                <p *ngIf="consoleError != ''" class="text text-danger">*{{consoleError}}</p>
+                <p *ngIf="consoleError != '' " class="text text-danger">*{{consoleError}}</p>
 
               </div>
               <p class="card-subtitle mb-2 text-muted" style="margin-top: 10px;">تاريخ الميلاد: {{birthDate|date: 'dd-MM-yyyy'}}</p>
@@ -78,7 +78,7 @@
                   </div>
                   <div class="col-md-6 mb-4">
                     <label class="form-label" style="display: block;margin-bottom: 25px;" for="form3Example1w"></label>
-                    <button type="submit" [disabled]="!myForm.valid || consoleError != '' " id="form3Example1w"  class="btn btn-success btn-lg">إرسال</button>
+                    <button type="submit" [disabled]="!myForm.valid || consoleError != '' || state != ''" id="form3Example1w"  class="btn btn-success btn-lg">إرسال</button>
                   </div>
 
               </div>
