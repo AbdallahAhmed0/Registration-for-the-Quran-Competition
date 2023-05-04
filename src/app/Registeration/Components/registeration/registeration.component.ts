@@ -17,6 +17,8 @@ export class RegisterationComponent implements OnInit {
   state:string ='';
 
   consoleError:any = '';
+  checkErrorInputNumberID:String='';
+  checkErrorInputNumberphone:String='';
 
   constructor(private fb: FormBuilder,
               private registerService:RegisterationService,
@@ -79,10 +81,18 @@ export class RegisterationComponent implements OnInit {
     }
   }
   // to prevent write any char in phone and nationalId
-  onKeyDown(event: KeyboardEvent) {
+  onKeyDown(event: KeyboardEvent,type:string) {
     const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
     if (!allowedKeys.includes(event.key)) {
       event.preventDefault();
+      if(type == 'id'){
+        this.checkErrorInputNumberID = `يجب أن تكون الأرقام باللغة الإنجليزية`
+      }else{
+        this.checkErrorInputNumberphone = `يجب أن تكون الأرقام باللغة الإنجليزية`
+      }
+    }
+    else{
+      this.checkErrorInputNumberID = this.checkErrorInputNumberphone = '';
     }
   }
   getBirthDate(nationalId: string): Date {
