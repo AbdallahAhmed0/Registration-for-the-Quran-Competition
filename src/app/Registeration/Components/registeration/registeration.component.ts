@@ -14,7 +14,7 @@ export class RegisterationComponent implements OnInit {
   Age!:number;
   birthDate!:Date;
   gender!:string;
-  state!:string;
+  state:string ='';
 
   consoleError:any = '';
 
@@ -39,7 +39,7 @@ export class RegisterationComponent implements OnInit {
           this.consoleError = '';
         }
         else{
-          this.consoleError = `* يجب إدخال رقم قومي صحيح وإلا ستحرم من التسجيل`
+          this.consoleError = ` يجب إدخال رقم قومي صحيح وإلا لن تتمكن من التسجيل`
         }
         this.Age = this.getAge(data);
         this.gender = this.getGender(data);
@@ -65,11 +65,11 @@ export class RegisterationComponent implements OnInit {
           // Handle error
           if(error == 'Error: National ID must be unique and consist of 14 digits'){
             this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
-            console.log(this.consoleError)
           }
         }
       );
       setTimeout(()=>{
+        console.log(this.consoleError)
         if(this.consoleError == ''){
           this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
         }
