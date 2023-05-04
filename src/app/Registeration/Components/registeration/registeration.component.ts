@@ -31,6 +31,7 @@ export class RegisterationComponent implements OnInit {
       nationalId: ['', [Validators.required,Validators.minLength(14),Validators.maxLength(14)]],
       darName: ['', Validators.required],
       phone: ['', [Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
+      city: ['', Validators.required],
     });
     this.nationalId?.valueChanges.subscribe(data =>{
       if(data.length == 14){
@@ -166,6 +167,9 @@ get darName(){
 }
 get phone(){
   return this.myForm.get('phone');
+}
+get city(){
+  return this.myForm.get('city');
 }
 
 
