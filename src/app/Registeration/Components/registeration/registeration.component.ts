@@ -63,12 +63,18 @@ export class RegisterationComponent implements OnInit {
         },
         error => {
           // Handle error
-          this.consoleError = error;
+          if(error == 'Error: National ID must be unique and consist of 14 digits'){
+            this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
+            console.log(this.consoleError)
+          }
         }
       );
-      if(this.consoleError == ''){
-        this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
-      }
+      setTimeout(()=>{
+        if(this.consoleError == ''){
+          this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
+        }
+      },1000)
+
     }
   }
   // to prevent write any char in phone and nationalId
