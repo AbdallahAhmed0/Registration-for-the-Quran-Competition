@@ -8,8 +8,7 @@ const routes: Routes = [
   {
     path:"Register",
     loadChildren:()=>import('./Registeration/registeration.module').then(l => l.RegisterationModule)
-  },
-  {}
+  }
 
 ];
 
