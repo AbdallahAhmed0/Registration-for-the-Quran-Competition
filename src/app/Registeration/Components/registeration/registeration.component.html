@@ -31,14 +31,14 @@
                 <label class="form-label" style="display: block;margin-bottom: 32px;" for="form3Example1q"></label>
                 <select class="form-select"  formControlName="level" id="form3Example1q" required>
                   <option value=""  disabled selected>اختر المستوى</option>
-                  <option value="1">الأول</option>
-                  <option value="2">الثاني</option>
-                  <option value="3">الثالث</option>
-                  <option value="4">الرابع</option>
-                  <option value="5">الخامس</option>
-                  <option value="6">السادس</option>
-                  <option value="7">السابع</option>
-                  <option value="8">الثامن</option>
+                  <option value="1"> الأول (القرآن كاملا)</option>
+                  <option value="2">الثاني (ثلاثة أرباع القرآن)</option>
+                  <option value="3">الثالث (نصف القرآن)</option>
+                  <option value="4">الرابع (ربع القرآن)</option>
+                  <option value="5">الخامس (خمس أجزاء)</option>
+                  <option value="6">السادس (ثلاثة أجزاء)</option>
+                  <option value="7">السابع (جزءان)</option>
+                  <option value="8">الثامن (جزء)</option>
                 </select>
                 <div *ngIf="level?.dirty && level?.touched">
                   <p *ngIf="level?.hasError('required')" class="text text-danger">* مطلوب إدخال المستوى </p>
@@ -51,7 +51,6 @@
                   <option value="القاهرة">القاهرة</option>
                   <option value="الجيزة">الجيزة</option>
                   <option value="الإسكندرية">الإسكندرية</option>
-                  <option value="شرم الشيخ">شرم الشيخ</option>
                   <option value="بورسعيد">بورسعيد</option>
                   <option value="السويس">السويس</option>
                   <option value="طنطا">طنطا</option>
@@ -64,10 +63,12 @@
                   <option value="قنا">قنا</option>
                   <option value="بني سويف">بني سويف</option>
                   <option value="سوهاج">سوهاج</option>
-                  <option value="الغردقة">الغردقة</option>
+                  <option value="المنيا">المنيا</option>
                   <option value="بنها">بنها</option>
                   <option value="العريش">العريش</option>
                   <option value="مرسى مطروح">مرسى مطروح</option>
+                  <option value="الأقصر">الأقصر</option>
+                  <option value="أسوان">أسوان</option>
                 </select>
 
                 <div *ngIf="city?.dirty && city?.touched">
