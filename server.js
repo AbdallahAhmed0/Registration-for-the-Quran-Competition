@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/dist/registration-for-the-quran-competition
 
 app.get('/*', function(req,res) {
 
-res.sendFile(path.join(__dirname+'/dist/registration-for-the-quran-competition'));
+res.sendFile(path.join(__dirname+'/dist/registration-for-the-quran-competition/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
