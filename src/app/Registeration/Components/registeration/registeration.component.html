@@ -94,7 +94,6 @@
 
             </div>
             <div class="form-outline mb-4">
-              <p>{{print}}</p>
               <label class="form-label" for="form3Example1q">رقم واتساب للتواصل</label>
               <input type="text" placeholder="يجب أن تكون الأرقام باللغة الإنجليزية" minlength="11" maxlength="11" formControlName="phone" id="form3Example1q" class="form-control" (keydown)="onKeyDown($event)" required/>
               <div *ngIf="phone?.dirty && phone?.touched">

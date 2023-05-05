@@ -15,7 +15,6 @@ export class RegisterationComponent implements OnInit {
   birthDate!:Date;
   gender!:string;
   state:string ='';
-print:any;
   consoleError:any = '';
 
   constructor(private fb: FormBuilder,
@@ -80,13 +79,14 @@ print:any;
   }
   // to prevent write any char in phone and nationalId
   onKeyDown(event: KeyboardEvent) {
-    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-    'U+0030','U+0031','U+0032','U+0033','U+0034','U+0035','U+0036','U+0037','U+0038','U+0039',
-     'Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
-    if (!allowedKeys.includes(event.key)) {
+    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9','Backspace', 'ArrowLeft', 'ArrowRight', 'Delete',48, 49, 50, 51, 52, 53, 54, 55, 56, 57, // numeric keys
+    8,  // Backspace
+    37, 39, // ArrowLeft, ArrowRight
+    46]; // Delete
+
+    if (!allowedKeys.includes(event.key) || event.which) {
       event.preventDefault();
     }
-    this.print= event.key;
   }
   getBirthDate(nationalId: string): Date {
     let year, day, month;
