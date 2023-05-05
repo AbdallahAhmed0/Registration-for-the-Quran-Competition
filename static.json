@@ -1,7 +1,0 @@
-{
-  "root": "dist/registration-for-the-quran-competition",
-  "clean_urls": false,
-  "routes": {
-    "/**": "index.html"
-  }
-}
