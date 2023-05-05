@@ -80,7 +80,7 @@ export class RegisterationComponent implements OnInit {
   }
   // to prevent write any char in phone and nationalId
   onKeyDown(event: KeyboardEvent) {
-    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8, 37, 39, 46,'Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
     if (!allowedKeys.includes(event.key)) {
       event.preventDefault();
     }
