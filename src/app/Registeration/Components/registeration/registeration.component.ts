@@ -78,29 +78,15 @@ export class RegisterationComponent implements OnInit {
 
     }
   }
-  // // to prevent write any char in phone and nationalId
-  // onKeyDown(event: KeyboardEvent) {
-  //   const allowedKeys = [ 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8, 37, 39, 46,'Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
-  //   if (!allowedKeys.includes(event.keyCode)) {
-  //     event.preventDefault();
-  //   }
-  // }
-   validateInput(input: string): void {
-    // Regular expression to match non-English digits
-    const regex = /[\u0660-\u0669]/g;
-
-    // If the input contains non-English digits, replace them with English digits
-    if (input.match(regex)) {
-      input = input.replace(/[\u0660-\u0669]/g, (digit) => {
-        return String.fromCharCode(digit.charCodeAt(0) - 1728);
-      });
-
-      // Update the input field with the modified value
-      const inputElement = document.getElementById("myInput") as HTMLInputElement;
-      inputElement.value = input;
+  // to prevent write any char in phone and nationalId
+  onKeyDown(event: KeyboardEvent) {
+    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+    'U+0030','U+0031','U+0032','U+0033','U+0034','U+0035','U+0036','U+0037','U+0038','U+0039',
+     'Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+    if (!allowedKeys.includes(event.key)) {
+      event.preventDefault();
     }
   }
-
   getBirthDate(nationalId: string): Date {
     let year, day, month;
 

@@ -79,7 +79,7 @@
 
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example1q">الرقم القومي</label>
-              <input type="text" minlength="14"placeholder="يجب أن تكون الأرقام باللغة الإنجليزية" maxlength="14" formControlName="nationalId" id="form3Example1q" class="form-control"  required />
+              <input type="text" minlength="14"placeholder="يجب أن تكون الأرقام باللغة الإنجليزية" maxlength="14" formControlName="nationalId" id="form3Example1q" class="form-control" (keydown)="onKeyDown($event)" required />
               <div *ngIf="nationalId?.dirty && nationalId?.touched">
                 <p *ngIf="nationalId?.hasError('required')" class="text text-danger">* مطلوب إدخال الرقم القومي </p>
                 <p *ngIf="nationalId?.hasError('minlength') || nationalId?.hasError('maxlength')" class="text text-danger">* الرقم القومي يتكون من 14 رقم </p>
@@ -94,8 +94,8 @@
 
             </div>
             <div class="form-outline mb-4">
-              <label class="form-label" for="myInput">رقم واتساب للتواصل</label>
-              <input type="text" placeholder="يجب أن تكون الأرقام باللغة الإنجليزية" minlength="11" maxlength="11" formControlName="phone"  class="form-control" id="myInput" oninput="validateInput(this.value)" required/>
+              <label class="form-label" for="form3Example1q">رقم واتساب للتواصل</label>
+              <input type="text" placeholder="يجب أن تكون الأرقام باللغة الإنجليزية" minlength="11" maxlength="11" formControlName="phone" id="form3Example1q" class="form-control" (keydown)="onKeyDown($event)" required/>
               <div *ngIf="phone?.dirty && phone?.touched">
                 <p *ngIf="phone?.hasError('required')" class="text text-danger">* مطلوب إدخال رقم للتواصل </p>
                 <p *ngIf="phone?.hasError('minlength') || phone?.hasError('maxlength')" class="text text-danger">* الرقم المحمول يتكون من 11 رقم </p>
