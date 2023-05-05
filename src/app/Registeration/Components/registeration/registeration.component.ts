@@ -87,15 +87,20 @@ export class RegisterationComponent implements OnInit {
   getBirthDate(nationalId: string): Date {
     let year, day, month;
 
-    if (nationalId.charAt(0) === '2') {
-      year = 1900;
-    } else {
-      year = 2000;
-    }
 
-    year += parseInt(nationalId.substring(1, 3), 10);
-    month = parseInt(nationalId.substring(3, 5), 10) - 1; // month is zero-based
-    day = parseInt(nationalId.substring(5, 7), 10);
+if (nationalId.charAt(0) == '2') {
+  year = 1900;
+} else {
+  year = 2000;
+}
+
+year += parseInt(nationalId.substring(1, 3));
+month = parseInt(nationalId.substring(3, 5));
+day = parseInt(nationalId.substring(5, 7));
+
+// Month must be between 1 and 12 and Day must be between 1 and 31
+this.consoleError = (month < 1 || month > 12 || day < 1 || day > 31) ? 'يجب إدخال رقم قومي صحيح وإلا لن تتمكن من التسجيل' : '';
+
 
     return new Date(year, month, day);
   }
