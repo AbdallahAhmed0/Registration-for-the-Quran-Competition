@@ -15,7 +15,7 @@ export class RegisterationComponent implements OnInit {
   birthDate!:Date;
   gender!:string;
   state:string ='';
-
+print:any;
   consoleError:any = '';
 
   constructor(private fb: FormBuilder,
@@ -86,6 +86,7 @@ export class RegisterationComponent implements OnInit {
     if (!allowedKeys.includes(event.key)) {
       event.preventDefault();
     }
+    this.print= event.key;
   }
   getBirthDate(nationalId: string): Date {
     let year, day, month;
