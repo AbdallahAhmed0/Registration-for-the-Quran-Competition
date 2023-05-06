@@ -73,7 +73,7 @@ export class RegisterationComponent implements OnInit {
         if(this.consoleError == ''){
           this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
         }
-      },2000)
+      },1000)
 
     }
   }
