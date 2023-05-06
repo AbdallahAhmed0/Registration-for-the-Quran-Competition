@@ -90,7 +90,6 @@ onSubmit(){
         // Handle error
         if(error == 'Error: National ID must be unique and consist of 14 digits'){
           this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
-          this.route.navigate(['/Register'],{ state: { data: this.myForm.value } })
         }
         console.log(this.consoleError);
       }
