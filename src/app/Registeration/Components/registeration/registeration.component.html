@@ -88,10 +88,15 @@
 
 
               </div>
-              <p class="card-subtitle mb-2 text-muted" style="margin-top: 10px;">تاريخ الميلاد: {{birthDate|date: 'dd-MM-yyyy'}}</p>
-              <p class="card-subtitle mb-2 text-muted"> السن: {{Age}}</p>
-              <p class="card-subtitle mb-2 text-muted"> النوع: {{gender}}</p>
-              <p class="text text-danger"> {{state}}</p>
+              <div>
+              <div *ngIf="consoleError == ''">
+                <p class="card-subtitle mb-2 text-muted" style="margin-top: 10px;">تاريخ الميلاد: {{birthDate|date: 'dd-MM-yyyy'}}</p>
+                <p class="card-subtitle mb-2 text-muted"> السن: {{Age}}</p>
+                <p class="card-subtitle mb-2 text-muted"> النوع: {{gender}}</p>
+                <p class="text text-danger"> {{state}}</p>
+              </div>
+
+              </div>
 
             </div>
             <div class="form-outline mb-4">
