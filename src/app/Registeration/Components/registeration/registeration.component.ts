@@ -88,10 +88,9 @@ onSubmit(){
       },
       error: (error:any)=>{
         // Handle error
-        // if(error == ' National ID must be unique and consist of 14 digits'){
+        if(error == ' Error: National ID must be unique and consist of 14 digits'){
           this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
-          console.log(this.consoleError,'   ' ,error);
-        // }
+        }
       }
       }
     this.registerService.addUser(this.myForm.value).subscribe(observer);
