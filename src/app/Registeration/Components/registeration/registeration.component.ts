@@ -84,12 +84,13 @@ onSubmit(){
     this.registerService.addUser(this.myForm.value).subscribe(
       data => {
         // Handle success
-        this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
+        this.route.navigate(['Register'],{ state: { data: this.myForm.value } })
       },
       error => {
         // Handle error
         if(error == 'Error: National ID must be unique and consist of 14 digits'){
           this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
+          this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
         }
         console.log(this.consoleError);
       }
