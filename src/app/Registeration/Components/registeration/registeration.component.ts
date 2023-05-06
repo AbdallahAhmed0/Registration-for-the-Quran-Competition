@@ -64,7 +64,7 @@ export class RegisterationComponent implements OnInit {
         },
         error => {
           // Handle error
-          if(error == 'National ID must be unique and consist of 14 digits'){
+          if(error == 'Error: National ID must be unique and consist of 14 digits'){
             this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
           }
         }
