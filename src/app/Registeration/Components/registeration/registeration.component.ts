@@ -81,18 +81,19 @@ export class RegisterationComponent implements OnInit {
 
 onSubmit(){
   if (this.myForm.valid) {
-    this.registerService.addUser(this.myForm.value).subscribe(
-      data => {
+    const observer={
+      next: (answer:any) => {
         // Handle success
         this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
       },
-      error => {
+      error: (error:any)=>{
         // Handle error
         if(error == 'Error: National ID must be unique and consist of 14 digits'){
           this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
         }
       }
-    );
+      }
+    this.registerService.addUser(this.myForm.value).subscribe(observer);
   }
 }
   // to prevent write any char in phone and nationalId
