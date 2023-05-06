@@ -56,6 +56,7 @@ export class RegisterationComponent implements OnInit {
     });
 
   }
+/*
   onSubmit(){
     if (this.myForm.valid) {
       this.registerService.addUser(this.myForm.value).subscribe(
@@ -77,6 +78,24 @@ export class RegisterationComponent implements OnInit {
 
     }
   }
+*/
+onSubmit(){
+  if (this.myForm.valid) {
+    this.registerService.addUser(this.myForm.value).subscribe(
+      data => {
+        // Handle success
+        this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
+      },
+      error => {
+        // Handle error
+        if(error == 'Error: National ID must be unique and consist of 14 digits'){
+          this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
+        }
+        console.log(this.consoleError);
+      }
+    );
+  }
+}
   // to prevent write any char in phone and nationalId
   onKeyDown(event: KeyboardEvent) {
     const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9','Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
@@ -102,7 +121,7 @@ day = parseInt(nationalId.substring(5, 7));
 this.consoleError = (month < 1 || month > 12 || day < 1 || day > 31) ? 'يجب إدخال رقم قومي صحيح وإلا لن تتمكن من التسجيل' : '';
 
 
-    return new Date(year, month, day);
+    return new Date(year, month - 1, day);
   }
   validateBirthDate(data: any): boolean {
     const birthDate = this.getBirthDate(data);
