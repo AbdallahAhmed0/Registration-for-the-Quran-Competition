@@ -57,27 +57,6 @@ export class RegisterationComponent implements OnInit {
 
   }
 
-  // onSubmit(){
-  //   if (this.myForm.valid) {
-  //     this.registerService.addUser(this.myForm.value).subscribe(
-  //       data => {
-  //       },
-  //       error => {
-  //         // Handle error
-  //         if(error == 'Error: National ID must be unique and consist of 14 digits'){
-  //           this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
-  //         }
-  //       }
-  //     );
-  //     setTimeout(()=>{
-  //       console.log(this.consoleError)
-  //       if(this.consoleError == ''){
-  //         this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
-  //       }
-  //     },1000)
-
-  //   }
-  // }
 
 onSubmit(){
   if (this.myForm.valid) {
@@ -90,7 +69,7 @@ onSubmit(){
         // Handle error
         if(error == 'Error: National ID must be unique and consist of 14 digits'){
           this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
-        }console.log([error])
+        }
       }
       }
     this.registerService.addUser(this.myForm.value).subscribe(observer);
