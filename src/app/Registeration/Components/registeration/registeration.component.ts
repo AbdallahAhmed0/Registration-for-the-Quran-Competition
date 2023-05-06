@@ -102,7 +102,7 @@ day = parseInt(nationalId.substring(5, 7));
 this.consoleError = (month < 1 || month > 12 || day < 1 || day > 31) ? 'يجب إدخال رقم قومي صحيح وإلا لن تتمكن من التسجيل' : '';
 
 
-    return new Date(year, month, day);
+    return new Date(year, month - 1, day);
   }
   validateBirthDate(data: any): boolean {
     const birthDate = this.getBirthDate(data);
