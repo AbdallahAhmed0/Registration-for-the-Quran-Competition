@@ -27,7 +27,7 @@ export class RegisterationService {
       console.error(
         `Backend returned code ${error.status}, body was: `, error.error);
         return throwError(
-          ()=>new Error(error.error)
+          ()=>new Error(error.error.message)
         )
 
     }
