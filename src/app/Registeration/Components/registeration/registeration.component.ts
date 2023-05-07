@@ -25,6 +25,7 @@ export class RegisterationComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.fb.group({
       firstName: ['', Validators.required],
+      secondName:['', Validators.required],
       lastName: ['', Validators.required],
       level: ['', [Validators.required,Validators.max(8),Validators.min(1)]],
       nationalId: ['', [Validators.required,Validators.minLength(14),Validators.maxLength(14)]],
@@ -67,14 +68,13 @@ onSubmit(){
       },
       error: (error:any)=>{
         // Handle error
-        if(error == 'Error: National ID must be unique and consist of 14 digits'){
+        if(error.includes('Error: National ID must be unique and consist of 14 digits')){
           this.consoleError = 'الرقم القومي لا يجب أن يكون قد تم التسجيل به مسبقا';
         }
+
       }
       }
     this.registerService.addUser(this.myForm.value).subscribe(observer);
-    console.log(this.consoleError);
-
   }
 }
   // to prevent write any char in phone and nationalId
@@ -156,6 +156,9 @@ this.consoleError = (month < 1 || month > 12 || day < 1 || day > 31) ? 'يجب �
 
 get firstName(){
 return this.myForm.get('firstName');
+}
+get secondName(){
+  return this.myForm.get('secondName');
 }
 get lastName(){
   return this.myForm.get('lastName');

@@ -11,20 +11,28 @@
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="px-md-2">
 
             <div class="row">
-              <div class="col-md-6 mb-4">
+              <div class="col-md-4 mb-4">
                 <label class="form-label" for="form3Example1q">الإسم الأول</label>
                 <input type="text" formControlName="firstName" id="form3Example1q" class="form-control" required />
                 <div *ngIf="firstName?.dirty && firstName?.touched">
                   <p *ngIf="firstName?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الأول</p>
                 </div>
               </div>
-              <div class="col-md-6 mb-4">
-                <label class="form-label" for="form3Example1q">باقي الإسم</label>
-                <input type="text" formControlName="lastName" id="form3Example1q" class="form-control" required/>
-                <div *ngIf="lastName?.dirty && lastName?.touched">
-                  <p *ngIf="lastName?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الثاني</p>
+              <div class="col-md-4 mb-4">
+                <label class="form-label" for="form3Example1q">الإسم الثاني</label>
+                <input type="text" formControlName="secondName" id="form3Example1q" class="form-control" required/>
+                <div *ngIf="secondName?.dirty && secondName?.touched">
+                  <p *ngIf="secondName?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الثاني</p>
                 </div>
               </div>
+              <div class="col-md-4 mb-4">
+                <label class="form-label" for="form3Example1q">الإسم الثالث</label>
+                <input type="text" formControlName="lastName" id="form3Example1q" class="form-control" required/>
+                <div *ngIf="lastName?.dirty && lastName?.touched">
+                  <p *ngIf="lastName?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الثالث</p>
+                </div>
+              </div>
+
             </div>
             <div class="row">
               <div class="col-md-6 mb-4">
