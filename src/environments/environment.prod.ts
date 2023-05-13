@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
 
-  APPURL:"http://www.ahbabkhatamelmorsalen.com/api"
+  APPURL:"http://http://localhost:8087/api"
 };
