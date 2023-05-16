@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  APPURL:'https://www.ahbabkhatamelmorsalen.com/api'
+  APPURL:'http://www.ahbabkhatamelmorsalen.com/api'
 };
 
 /*
