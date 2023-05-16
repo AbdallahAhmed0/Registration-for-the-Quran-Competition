@@ -7,6 +7,9 @@ import { RegisterationModule } from './Registeration/registeration.module';
 import { FooterComponent } from './dashboard/footer/footer.component';
 import { HomeComponent } from './dashboard/home/home.component';
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CorsInterceptor } from './cors.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -16,12 +19,21 @@ import { HomeComponent } from './dashboard/home/home.component';
 
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     RegisterationModule
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorsInterceptor,
+      multi: true
+    }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
