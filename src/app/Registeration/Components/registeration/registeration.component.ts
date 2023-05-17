@@ -61,12 +61,12 @@ export class RegisterationComponent implements OnInit {
 
 onSubmit(){
   // check if  phone number only digit
-  if(!this.validateStringDigitNumber(this.phone?.value)){
+  if(!this.PhoneNumber(this.phone?.value)){
         this.phone?.reset();
         this.consoleError = 'رقم واتساب خاطئ';
       }
   // check if nationalID number only digit
-  if(!this.validateStringDigitNumber(this.nationalId?.value)){
+  if(!this.validateId(this.nationalId?.value)){
     this.nationalId?.reset();
     this.consoleError = 'الرقم القومي غير صحيح';
   }
@@ -88,15 +88,15 @@ onSubmit(){
     this.registerService.addUser(this.myForm.value).subscribe(observer);
   }
 }
-validateStringDigitNumber(value:string) {
-  const Regex = /^\d+$/; // Regular expression to match only digits
-
-  if (value && Regex.test(value)) {
-    return true; //  number contains only digits
-  }
-
-  return false; //  number contains non-digit characters or is empty
+validateId(id: string): boolean {
+  const ID_REGEX: string = "\\d{14}";
+  return new RegExp(ID_REGEX).test(id);
 }
+PhoneNumber(phoneNumber: string): boolean {
+  const PHONE_REGEX: string = "\\d{11}";
+  return new RegExp(PHONE_REGEX).test(phoneNumber);
+}
+
 
   // to prevent write any char in phone and nationalId
   onKeyDown(event: KeyboardEvent) {
