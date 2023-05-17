@@ -65,7 +65,6 @@ onSubmit(){
   if(!this.PhoneNumber(this.phone?.value)){
         this.phoneError = 'رقم واتساب خاطئ';
         this.phone?.patchValue('');
-        this.phoneError = '';
       }
 
   // check if nationalID number only digit
