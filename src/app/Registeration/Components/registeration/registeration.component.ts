@@ -63,16 +63,16 @@ export class RegisterationComponent implements OnInit {
 onSubmit(){
   // check if  phone number only digit
   if(!this.PhoneNumber(this.phone?.value)){
-        this.phone?.reset();
         this.phoneError = 'رقم واتساب خاطئ';
+        this.phone?.reset('');
       }else{
         this.phoneError = '';
       }
 
   // check if nationalID number only digit
   if(!this.validateId(this.nationalId?.value)){
-    this.nationalId?.reset();
     this.consoleError = 'الرقم القومي غير صحيح';
+    this.nationalId?.reset('');
   }
 
   if (this.myForm.valid) {
