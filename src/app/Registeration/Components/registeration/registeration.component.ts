@@ -79,7 +79,7 @@ onSubmit(){
     const observer={
       next: (answer:any) => {
         // Handle success
-        this.route.navigate(['Register/state'],{ state: { data: this.myForm.value } })
+        this.route.navigate(['/state'],{ state: { data: this.myForm.value } })
       },
       error: (error:any)=>{
         // Handle error
