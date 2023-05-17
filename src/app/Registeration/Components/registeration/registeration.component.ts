@@ -64,7 +64,7 @@ onSubmit(){
   // check if  phone number only digit
   if(!this.PhoneNumber(this.phone?.value)){
         this.phoneError = 'رقم واتساب خاطئ';
-        this.phone?.reset('');
+        this.phone?.patchValue('');
       }else{
         this.phoneError = '';
       }
@@ -72,7 +72,7 @@ onSubmit(){
   // check if nationalID number only digit
   if(!this.validateId(this.nationalId?.value)){
     this.consoleError = 'الرقم القومي غير صحيح';
-    this.nationalId?.reset('');
+    this.nationalId?.patchValue('');
   }
 
   if (this.myForm.valid) {
