@@ -50,29 +50,30 @@ export class RegisterationComponent implements OnInit {
           this.state = this.getState(data,this.level?.value);
         }
       }
+       // check if nationalID number only digit
+       if(!this.validateId(data)){
+        this.consoleError = 'الرقم القومي غير صحيح';
+      }
+
     });
     this.level?.valueChanges.subscribe(data =>{
       if(this.nationalId?.value != ''){
         this.state = this.getState(this.nationalId?.value,data);
       }
     });
+    this.phone?.valueChanges.subscribe(data =>{
+        // check if  phone number only digit
+        if(!this.PhoneNumber(data)){
+          this.phoneError = 'رقم واتساب خاطئ';
+        }else{
+          this.phoneError = '';
+        }
 
+    })
   }
 
 
 onSubmit(){
-  // check if  phone number only digit
-  if(!this.PhoneNumber(this.phone?.value)){
-        this.phoneError = 'رقم واتساب خاطئ';
-        this.phone?.patchValue('');
-        this.phoneError = '';
-      }
-
-  // check if nationalID number only digit
-  if(!this.validateId(this.nationalId?.value)){
-    this.consoleError = 'الرقم القومي غير صحيح';
-    this.nationalId?.patchValue('');
-  }
 
   if (this.myForm.valid) {
     const observer={
