@@ -26,10 +26,10 @@
                 </div>
               </div>
               <div class="col-md-4 mb-4">
-                <label class="form-label" for="form3Example1q">الإسم الثالث</label>
+                <label class="form-label" for="form3Example1q">باقي الإسم</label>
                 <input type="text" formControlName="lastName" id="form3Example1q" class="form-control" required/>
                 <div *ngIf="lastName?.dirty && lastName?.touched">
-                  <p *ngIf="lastName?.hasError('required')" class="text text-danger">* مطلوب إدخال الإسم الثالث</p>
+                  <p *ngIf="lastName?.hasError('required')" class="text text-danger">* مطلوب إدخال باقي الاسم</p>
                 </div>
               </div>
 
