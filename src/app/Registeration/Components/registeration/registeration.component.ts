@@ -16,6 +16,7 @@ export class RegisterationComponent implements OnInit {
   gender!:string;
   state:string ='';
   consoleError:any = '';
+  phoneError:any = '';
 
   constructor(private fb: FormBuilder,
               private registerService:RegisterationService,
@@ -63,8 +64,11 @@ onSubmit(){
   // check if  phone number only digit
   if(!this.PhoneNumber(this.phone?.value)){
         this.phone?.reset();
-        this.consoleError = 'رقم واتساب خاطئ';
+        this.phoneError = 'رقم واتساب خاطئ';
+      }else{
+        this.phoneError = '';
       }
+
   // check if nationalID number only digit
   if(!this.validateId(this.nationalId?.value)){
     this.nationalId?.reset();

@@ -112,7 +112,7 @@
               <div *ngIf="phone?.dirty && phone?.touched">
                 <p *ngIf="phone?.hasError('required')" class="text text-danger">* مطلوب إدخال رقم للتواصل </p>
                 <p *ngIf="phone?.hasError('minlength') || phone?.hasError('maxlength')" class="text text-danger">* الرقم المحمول يتكون من 11 رقم باللغةالإنجليزية</p>
-
+                <p *ngIf="phoneError != '' " class="text text-danger">*{{phoneError}}</p>
               </div>
             </div>
 
