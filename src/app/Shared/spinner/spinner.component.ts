@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-spinner',
@@ -8,7 +7,7 @@ import { LoaderService } from '../loader.service';
 })
 export class SpinnerComponent implements OnInit {
 
-  constructor(public loader: LoaderService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
