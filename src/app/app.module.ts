@@ -7,6 +7,8 @@ import { RegisterationModule } from './Registeration/registeration.module';
 import { FooterComponent } from './dashboard/footer/footer.component';
 import { HomeComponent } from './dashboard/home/home.component';
 import { SpinnerComponent } from './Shared/spinner/spinner.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './Shared/loading.interceptor';
 
 
 @NgModule({
@@ -23,7 +25,10 @@ import { SpinnerComponent } from './Shared/spinner/spinner.component';
     RegisterationModule
 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
