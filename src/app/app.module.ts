@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegisterationModule } from './Registeration/registeration.module';
 import { FooterComponent } from './dashboard/footer/footer.component';
 import { HomeComponent } from './dashboard/home/home.component';
+import { SpinnerComponent } from './Shared/spinner/spinner.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { HomeComponent } from './dashboard/home/home.component';
     AppComponent,
     FooterComponent,
     HomeComponent,
+    SpinnerComponent,
 
   ],
   imports: [
